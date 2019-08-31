@@ -74,3 +74,8 @@ promise.then(function(result){
     httpRequest.send();
 });
 console.log(get(url)); // Imp
+
+### 2.3 Returned promise
+get(url).then(function(result){
+    successHandler(result);
+});
