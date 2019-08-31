@@ -12,6 +12,11 @@ function get(url) {
                 reject(Error(httpRequest.status)); // reject callback, Error() is not Promise specific, it is a plain js fn that helps us view errors in a better structure
             }
         }
+
+        // Handler network errors
+        httpRequest.onerror = function(){
+            reject(Error('Network Error!'));
+        }
         httpRequest.send();
     });
 };
@@ -50,12 +55,15 @@ function tempToF(kelvin) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const apiKey = '3a5fca5e97c81f58bf0d583eab857a15';
+    // const apiKey = '3a5fca5e97c81f58bf0d583eab857a15';
+    const apiKey = '';
     const url = 'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + apiKey;
     // get(url, successHandler, failHandler);
     // console.log(get(url));
     // get function returns a promise which we can work with next
     get(url).then(function(result){
         successHandler(result);
+    }).catch(function(status){
+        failHandler(status);
     });
 });

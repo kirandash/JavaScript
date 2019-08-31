@@ -75,7 +75,14 @@ promise.then(function(result){
 });
 console.log(get(url)); // Imp
 
-### 2.3 Returned promise
+### 2.3 Returned promise with then()
 get(url).then(function(result){
     successHandler(result);
+});
+
+### 2.4 Rejected promise with catch()
+get(url).then(function(result){
+    successHandler(result);
+}).catch(function(status){ // Imp
+    failHandler(status);
 });
