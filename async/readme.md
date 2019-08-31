@@ -105,3 +105,13 @@ Promises: Introduced in 2015
 Won't work directly in older browsers or opera mini.
 Thus use polyfills
 https://github.com/taylorhakes/promise-polyfill
+
+## 3. Programming Asynchronously with Async/Await
+### 3.1 Intro to Async/Await model
+Introduced in 2017
+Easier to read than promises
+async function readyData() {
+    let data = await getData();
+    let formattedData = await formatData(data);
+    return formattedData;
+}
