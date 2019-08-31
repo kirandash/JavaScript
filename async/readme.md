@@ -86,3 +86,13 @@ get(url).then(function(result){
 }).catch(function(status){ // Imp
     failHandler(status);
 });
+
+### 2.5 Default promise handler - finally()
+code in finally() will execute no matter resolve() or reject() is executed.
+get(url).then(function(result){
+    ...
+}).catch(function(status){
+    ...
+}).finally(function(){
+    ...
+});
