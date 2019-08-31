@@ -119,3 +119,6 @@ async function readyData() {
 ### 3.2 Implementing Async/Await
 async - used to declare a function as asynchronous
 await - waits for the async call to finish
+
+### 3.3 Handling errors with Async/Await - try & catch, finally
+async/await don't have built in .catch error handler like promises. But JS try and catch can be used

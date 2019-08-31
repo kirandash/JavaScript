@@ -55,8 +55,8 @@ function tempToF(kelvin) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const apiKey = '3a5fca5e97c81f58bf0d583eab857a15';
-    // const apiKey = '';
+    // const apiKey = '3a5fca5e97c81f58bf0d583eab857a15';
+    const apiKey = '';
     
     const weatherDiv = document.querySelector('#weather');
 
@@ -91,19 +91,23 @@ document.addEventListener('DOMContentLoaded', function() {
         weatherDiv.classList.remove('hidden');
     });*/
     (async function(){
-        let results = [];
-        results.push(await get(urls[0]));
-        results.push(await get(urls[1]));
-        results.push(await get(urls[2]));
-        results.push(await get(urls[3]));
+        try {
+            let results = [];
+            results.push(await get(urls[0]));
+            results.push(await get(urls[1]));
+            results.push(await get(urls[2]));
+            results.push(await get(urls[3]));
 
-        // Note that the synchronous code here will execute only after the above mentioned asynchronous calls finish executing
-        let literals = results.map(function(result){
-            return successHandler(result); // returns single result of template string
-        });
+            // Note that the synchronous code here will execute only after the above mentioned asynchronous calls finish executing
+            let literals = results.map(function(result){
+                return successHandler(result); // returns single result of template string
+            });
 
-        weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
-        weatherDiv.classList.remove('hidden');
-
+            weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
+        }catch(status){
+            failHandler(status);
+        }finally {
+            weatherDiv.classList.remove('hidden');
+        }
     })(); // Immediately invoked async function
 });
