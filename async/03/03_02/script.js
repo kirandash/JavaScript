@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // get function returns a promise which we can work with next
     // get(url)
     // Passing array of promises
-    Promise.all([get(urls[0]), get(urls[1]), get(urls[2]), get(urls[3])])
+    /*Promise.all([get(urls[0]), get(urls[1]), get(urls[2]), get(urls[3])])
     .then(function(results){
         return results.map(function(result){
             return successHandler(result); // returns single result of template string
@@ -89,5 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Common/Default code moved to finally block
         // const weatherDiv = document.querySelector('#weather');
         weatherDiv.classList.remove('hidden');
-    });
+    });*/
+    (async function(){
+        let results = [];
+        results.push(await get(urls[0]));
+        results.push(await get(urls[1]));
+        results.push(await get(urls[2]));
+        results.push(await get(urls[3]));
+
+        // Note that the synchronous code here will execute only after the above mentioned asynchronous calls finish executing
+        let literals = results.map(function(result){
+            return successHandler(result); // returns single result of template string
+        });
+
+        weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
+        weatherDiv.classList.remove('hidden');
+
+    })(); // Immediately invoked async function
 });

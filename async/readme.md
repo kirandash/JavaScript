@@ -117,3 +117,5 @@ async function readyData() {
 }
 
 ### 3.2 Implementing Async/Await
+async - used to declare a function as asynchronous
+await - waits for the async call to finish
