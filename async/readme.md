@@ -33,3 +33,30 @@ if(httpRequest.status === 200){
 }
 
 get(url, successHandler, failHandler);
+
+## 2. Programming Asynchronously with Promises
+### 2.1 Promises - Intro
+Promise: An object that represents the result of an asynchronous operation.
+Contains two properties: a. state: "pending", "fulfilled" or "rejected"
+b. result property: "undefined", "value" or "error"
+
+Possible cases:
+a. resolve(value) => state: "fulfilled", result: "value"
+b. reject(error) => state: "rejected", result: "error"
+
+Ex: let promise = new Promise(function(resolve, reject){
+    if(...){
+        resolve(value);
+    }else{
+        reject(error);
+    }
+});
+
+Once resolved,
+promise.then(function(result){
+    ...
+    return newResult;
+}).then(function(result){
+    ...
+    return newResult2;
+});
