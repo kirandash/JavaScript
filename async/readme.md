@@ -24,3 +24,12 @@ function get(url, success) {
     httpRequest.send();
 };
 get(url, successHandler);
+
+### 1.3 Fail Callback
+if(httpRequest.status === 200){
+    success(httpRequest.responseText);
+} else {
+    fail(httpRequest.status);
+}
+
+get(url, successHandler, failHandler);
