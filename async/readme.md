@@ -99,3 +99,9 @@ get(url).then(function(result){
 
 ### 2.6 Multiple promises - .all([])
 Promise.all([get(urls[0]), get(urls[1]), get(urls[2]), get(urls[3])])
+
+### 2.7 Promise - Polyfills
+Promises: Introduced in 2015
+Won't work directly in older browsers or opera mini.
+Thus use polyfills
+https://github.com/taylorhakes/promise-polyfill
