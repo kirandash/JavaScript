@@ -60,3 +60,5 @@ promise.then(function(result){
     ...
     return newResult2;
 });
+
+### 2.2 Promises - In use
