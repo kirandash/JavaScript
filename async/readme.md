@@ -13,3 +13,14 @@ https://home.openweathermap.org/api_keys
 ## 1. Programming Asynchronously with Callbacks
 ### 1.1 Understanding callbacks
 Asynchronous calls run parallely but stacked up to execute after the main stack execution finishes
+
+### 1.2 Callback - XMLHttpRequest
+function get(url, success) {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', url);
+    httpRequest.onload = function() {
+        success(httpRequest.responseText);
+    }
+    httpRequest.send();
+};
+get(url, successHandler);
