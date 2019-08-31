@@ -96,3 +96,5 @@ get(url).then(function(result){
 }).finally(function(){
     ...
 });
+
+### 2.6 Multiple promises - .all([])
