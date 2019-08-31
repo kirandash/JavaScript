@@ -98,3 +98,4 @@ get(url).then(function(result){
 });
 
 ### 2.6 Multiple promises - .all([])
+Promise.all([get(urls[0]), get(urls[1]), get(urls[2]), get(urls[3])])
