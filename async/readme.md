@@ -122,3 +122,9 @@ await - waits for the async call to finish
 
 ### 3.3 Handling errors with Async/Await - try & catch, finally
 async/await don't have built in .catch error handler like promises. But JS try and catch can be used
+
+### 3.4 Transpiling async/await code
+Async/await depends on promises.
+Thus promises polyfils has to be used for backwards compatibility.
+But first async/await has to be transpiled to promises using babel.
+https://babeljs.io/en/repl
