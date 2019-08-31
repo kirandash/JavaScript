@@ -62,3 +62,15 @@ promise.then(function(result){
 });
 
 ### 2.2 Promises - In use
+ return new Promise(function(resolve, reject){ // Imp
+    ......
+    httpRequest.onload = function() {
+        if(httpRequest.status === 200){
+            resolve(httpRequest.responseText); // Imp
+        } else {
+            reject(Error(httpRequest.status)); // Imp
+        }
+    }
+    httpRequest.send();
+});
+console.log(get(url)); // Imp

@@ -1,15 +1,19 @@
 // Add get() function here
-function get(url, success, fail) {
-    let httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', url);
-    httpRequest.onload = function() {
-        if(httpRequest.status === 200){
-            success(httpRequest.responseText);
-        } else {
-            fail(httpRequest.status);
+function get(url) {
+    return new Promise(function(resolve, reject){
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', url);
+        httpRequest.onload = function() {
+            if(httpRequest.status === 200){
+                // success(httpRequest.responseText);
+                resolve(httpRequest.responseText); // resolve callback
+            } else {
+                // fail(httpRequest.status);
+                reject(Error(httpRequest.status)); // reject callback, Error() is not Promise specific, it is a plain js fn that helps us view errors in a better structure
+            }
         }
-    }
-    httpRequest.send();
+        httpRequest.send();
+    });
 };
 
 // Success Handler
@@ -48,5 +52,6 @@ function tempToF(kelvin) {
 document.addEventListener('DOMContentLoaded', function() {
     const apiKey = '3a5fca5e97c81f58bf0d583eab857a15';
     const url = 'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + apiKey;
-    get(url, successHandler, failHandler);
+    // get(url, successHandler, failHandler);
+    console.log(get(url));
 });
