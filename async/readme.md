@@ -115,3 +115,5 @@ async function readyData() {
     let formattedData = await formatData(data);
     return formattedData;
 }
+
+### 3.2 Implementing Async/Await
